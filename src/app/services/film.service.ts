@@ -32,4 +32,8 @@ export class FilmService {
   getTvById(id): Observable<any[]> {
     return this.http.get<any[]>(baseUrl + '/tv/' + id + '?region=FR&language=fr-FR&api_key=' + apiKey);
   }
+
+  searchByName(name): Observable<any[]> {
+    return this.http.get<any[]>(baseUrl + '/search/movie?region=FR&language=fr-FR&api_key=' + apiKey + '&query=' + name);
+  }
 }

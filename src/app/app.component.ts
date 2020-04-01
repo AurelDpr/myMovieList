@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'myMovieList';
+
+  isConnected() {
+    return localStorage.getItem('user') !== null;
+  }
+
+  disconnect() {
+    localStorage.removeItem('user');
+  }
 }

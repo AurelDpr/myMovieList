@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,9 @@ import { TvComponent } from './components/tv/tv.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { ListComponent } from './components/list/list.component';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import { SearchComponent } from './components/search/search.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,16 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
     DetailComponent,
     TvComponent,
     MovieComponent,
-    ListComponent
+    ListComponent,
+    SearchComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule
+    FormsModule
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy}

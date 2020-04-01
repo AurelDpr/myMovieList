@@ -5,6 +5,9 @@ import {DetailComponent} from './components/detail/detail.component';
 import {MovieComponent} from './components/movie/movie.component';
 import {TvComponent} from './components/tv/tv.component';
 import {ListComponent} from './components/list/list.component';
+import {SearchComponent} from './components/search/search.component';
+import {RegisterComponent} from './components/register/register.component';
+import {LoginComponent} from './components/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo:  'home', pathMatch:  'full' },
@@ -13,6 +16,9 @@ const routes: Routes = [
   { path: 'tv', component: TvComponent },
   { path: 'list', component: ListComponent },
   { path: 'detail/:type/:id', component: DetailComponent },
+  { path: 'search', component: SearchComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
