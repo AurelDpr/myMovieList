@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FilmService } from '../../services/film.service';
+import {FilmService} from '../../services/film.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-tv',
+  templateUrl: './tv.component.html',
+  styleUrls: ['./tv.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class TvComponent implements OnInit {
 
-  films: Array<any> = [];
   series: Array<any> = [];
+  type = 'tv';
   baseOriginalPosterPath = 'https://image.tmdb.org/t/p/original';
   baseLittlePosterPath = 'https://image.tmdb.org/t/p/w154';
 
@@ -20,16 +20,13 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.filmService.getAllMoviesByPopularity().subscribe(response => {
-      this.films = response['results'].slice(0, 10);
-    });
     this.filmService.getAllTvsByPopularity().subscribe(response => {
       this.series = response['results'].slice(0, 10);
     });
   }
 
-  openDetail(film: any, type: string) {
-    this.router.navigate(['/detail/' + type + '/' + film.id]);
+  openDetail(serie: any) {
+    this.router.navigate(['/detail/' + this.type + '/' + serie.id]);
   }
 
 }

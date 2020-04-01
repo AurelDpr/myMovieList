@@ -6,12 +6,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { DetailComponent } from './components/detail/detail.component';
+import { TvComponent } from './components/tv/tv.component';
+import { MovieComponent } from './components/movie/movie.component';
+import { ListComponent } from './components/list/list.component';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DetailComponent
+    DetailComponent,
+    TvComponent,
+    MovieComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -19,7 +26,9 @@ import { DetailComponent } from './components/detail/detail.component';
     HttpClientModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

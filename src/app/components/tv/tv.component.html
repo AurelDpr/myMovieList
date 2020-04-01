@@ -1,0 +1,19 @@
+<div class="col-12 px-0 mx-0">
+  <div class="row px-0 mx-0">
+    <div class="col-12 px-0 mx-0" *ngIf="series !== undefined && series.length>0">
+      <img class="mx-0 px-0" width="100%" src="{{ baseOriginalPosterPath + series[0].backdrop_path}}">
+    </div>
+  </div>
+</div>
+
+<div class="col-12 mt-5 mx-0 text-white">
+  <h2><u>Populaire:</u></h2>
+</div>
+
+<div class="col-12 my-3 px-0 mx-0">
+  <div class="row px-0 mx-0">
+    <div class="col mt-3" *ngFor="let serie of series; let index = index;">
+      <img (click)="openDetail(serie)" class="mx-0 px-0 shadow" src="{{ baseLittlePosterPath + serie.poster_path}}">
+    </div>
+  </div>
+</div>

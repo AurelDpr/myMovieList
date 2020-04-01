@@ -21,7 +21,15 @@ export class FilmService {
     return this.http.get<any[]>(baseUrl + '/discover/movie?sort_by=popularity.desc&region=FR&language=fr-FR&api_key=' + apiKey);
   }
 
+  getAllTvsByPopularity(): Observable<any[]> {
+    return this.http.get<any[]>(baseUrl + '/discover/tv?sort_by=popularity.desc&region=FR&language=fr-FR&api_key=' + apiKey);
+  }
+
   getMovieById(id): Observable<any[]> {
     return this.http.get<any[]>(baseUrl + '/movie/' + id + '?region=FR&language=fr-FR&api_key=' + apiKey);
+  }
+
+  getTvById(id): Observable<any[]> {
+    return this.http.get<any[]>(baseUrl + '/tv/' + id + '?region=FR&language=fr-FR&api_key=' + apiKey);
   }
 }
