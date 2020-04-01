@@ -1,10 +1,16 @@
-<div class="col-12 mt-5 pt-5">
-  <div class="w-50 mx-auto px-5 py-3 border-light border rounded">
-    <h2 class="text-center text-white"><u> Se connecter </u></h2>
-    <form class="text-center">
-      <input [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" placeholder="Identifiant" type="text" class="form-control mt-3 w-75 mx-auto">
-      <input [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" placeholder="Mot de passe" type="password" class="form-control mt-3 w-75 mx-auto">
-      <button class="btn btn-outline-light align-content-center mt-3" (click)="login()"> Se connecter </button>
-    </form>
+<div class="col-md-6 col-10 mx-auto mt-5 pt-5">
+  <div class="row px-3 px-md-5 py-3 border-light border rounded">
+    <div class="col-12">
+      <h2 class="text-center text-white"><u> Se connecter </u></h2>
+    </div>
+    <div class="col-12">
+      <form class="text-center row">
+        <label for="username" class="text-white mt-3 col-md-9 col-12 mx-auto text-left px-0"> Identifiant : </label>
+        <input [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" id="username" placeholder="Identifiant" type="text" class="form-control col-md-9 col-12 mx-auto">
+        <label for="password" class="text-white mt-3 col-md-9 col-12 mx-auto text-left px-0"> Mot de passe: </label>
+        <input [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" id="password" placeholder="Mot de passe" type="password" class="form-control col-md-9 col-12 mx-auto">
+        <button class="btn btn-outline-light mt-3 col-md-6 col-12 mx-auto" (click)="login()"> Se connecter </button>
+      </form>
+    </div>
   </div>
 </div>

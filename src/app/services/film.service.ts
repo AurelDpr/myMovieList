@@ -33,7 +33,11 @@ export class FilmService {
     return this.http.get<any[]>(baseUrl + '/tv/' + id + '?region=FR&language=fr-FR&api_key=' + apiKey);
   }
 
-  searchByName(name): Observable<any[]> {
+  searchMovieByName(name): Observable<any[]> {
     return this.http.get<any[]>(baseUrl + '/search/movie?region=FR&language=fr-FR&api_key=' + apiKey + '&query=' + name);
+  }
+
+  searchTvByName(name): Observable<any[]> {
+    return this.http.get<any[]>(baseUrl + '/search/tv?region=FR&language=fr-FR&api_key=' + apiKey + '&query=' + name);
   }
 }

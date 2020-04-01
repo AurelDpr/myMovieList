@@ -43,6 +43,10 @@ export class DetailComponent implements OnInit {
 
   }
 
+  isConnected() {
+    return JSON.parse(localStorage.getItem('user')) !== null;
+  }
+
   addToList() {
     this.list.push(this.film);
     localStorage.setItem('list', JSON.stringify(this.list));

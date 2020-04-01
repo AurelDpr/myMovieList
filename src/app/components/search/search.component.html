@@ -1,10 +1,34 @@
 <div class="mt-5 col-12 pt-5 mx-0">
   <form>
     <div class="input-group mb-3">
-      <input type="text" (ngModel)="searchValue" class="form-control" placeholder="Rechercher un film ou une série" aria-label="search" aria-describedby="basic-addon2">
+      <input type="text" [(ngModel)]="searchValue" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Rechercher un film ou une série" aria-label="search" aria-describedby="basic-addon2">
       <div class="input-group-append">
         <button class="btn btn-outline-light" type="button" (click)="search()"><i class="fas fa-search"></i></button>
       </div>
     </div>
   </form>
+</div>
+
+<div class="col-12 mt-5 mx-0 text-white" *ngIf="films.length > 0">
+  <h2><u>Films:</u></h2>
+</div>
+
+<div class="container horizontal-scrollable col-12 my-3 px-0 mx-0" *ngIf="films.length > 0">
+  <div class="row text-center px-0 mx-0">
+    <div class="col mt-3" *ngFor="let film of films; let index = index;">
+      <img (click)="openDetail(film, 'movie')" class="mx-0 px-0 shadow" src="{{ baseLittlePosterPath + film.poster_path}}">
+    </div>
+  </div>
+</div>
+
+<div class="col-12 mt-5 mx-0 text-white" *ngIf="series.length > 0">
+  <h2><u>Séries:</u></h2>
+</div>
+
+<div class="container horizontal-scrollable col-12 my-3 px-0 mx-0" *ngIf="series.length > 0">
+  <div class="row text-center px-0 mx-0">
+    <div class="col mt-3" *ngFor="let serie of series; let index = index;">
+      <img (click)="openDetail(serie, 'tv')" class="mx-0 px-0 shadow" src="{{ baseLittlePosterPath + serie.poster_path}}">
+    </div>
+  </div>
 </div>

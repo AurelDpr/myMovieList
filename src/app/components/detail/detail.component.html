@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div class="col-12 px-5 mx-0 mt-n5">
+<div class="col-12 px-5 mx-0 mt-n5" [hidden]="!isConnected()">
   <button class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Ajouter à votre liste" (click)="addToList()" *ngIf="!isInList()"> <i class="fas fa-plus"></i> </button>
   <button class="btn btn-dark" data-toggle="tooltip" data-placement="right" title="Supprimer de votre liste" (click)="removeToList()" *ngIf="isInList()"> <i class="fas fa-check"></i> </button>
 </div>

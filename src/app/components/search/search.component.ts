@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FilmService} from "../../services/film.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-search',
@@ -9,22 +10,37 @@ import {FilmService} from "../../services/film.service";
 export class SearchComponent implements OnInit {
 
   searchValue = '';
-  resultList: Array<any> = [];
+  films: Array<any> = [];
+  series: Array<any> = [];
+  baseLittlePosterPath = 'https://image.tmdb.org/t/p/w154';
 
   constructor(
-    private filmService: FilmService
+    private filmService: FilmService,
+    private router: Router
   ) { }
 
   ngOnInit() {
   }
 
   search() {
-    console.log(this.searchValue);
-    this.resultList = [];
-    // this.filmService.searchByName(this.searchValue).subscribe(response => {
-    //   console.log(response);
-    //   this.resultList.push(response);
-    // });
+    this.films = [];
+    this.series = [];
+    this.filmService.searchMovieByName(this.searchValue).subscribe(response => {
+      const result = response['results'].filter(item => item.poster_path !== null);
+      result.forEach(item => {
+        this.films.push(item);
+      });
+    });
+    this.filmService.searchTvByName(this.searchValue).subscribe(response => {
+      const result = response['results'].filter(item => item.poster_path !== null);
+      result.forEach(item => {
+        this.series.push(item);
+      });
+    });
+  }
+
+  openDetail(film: any, type: string) {
+    this.router.navigate(['/detail/' + type + '/' + film.id]);
   }
 
 }
