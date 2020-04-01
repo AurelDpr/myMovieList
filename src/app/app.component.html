@@ -1,36 +1,57 @@
 <div class="col-12 mx-0 px-0 text-white py-3 fixed-top menu-nav">
   <div class="row mx-0 px-0">
-    <div class="col-2 d-lg-block d-none">
 
+    <div class="col-md-2 col-1">
     </div>
-    <div class="col-xl-1 col-lg-2 col-3">
+
+    <div class="col-lg-1 col-md-2 col-2 d-md-block d-none">
       <a class="text-white" routerLink="/home">Accueil</a>
     </div>
-    <div class="col-xl-1 col-lg-2 col-2">
+    <div class="col-lg-1 col-md-1 col-2 d-md-block d-none">
       <a class="text-white" routerLink="/tv">Séries</a>
     </div>
-    <div class="col-xl-1 col-lg-2 col-2">
+    <div class="col-lg-1 col-md-2 col-2 d-md-block d-none">
       <a class="text-white" routerLink="/movie">Films</a>
     </div>
-    <div class="col-xl-5 col-lg-3 col-4">
+    <div class="col-xl-5 col-lg-5 col-md-2 col-2 d-md-block d-none">
       <a class="text-white" *ngIf="isConnected()" routerLink="/list">Ma liste</a>
     </div>
-    <div class="col-1">
-      <a class="text-white" routerLink="/search"><i class="fas fa-search"></i></a>
+
+    <div class="dropdown col-sm-8 col-6 d-block d-md-none">
+      <button class="btn dropdown-toggle text-white ml-3 py-0" type="button" id="dropdownMenuParcourir" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Parcourir
+      </button>
+      <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuParcourir">
+        <a class="text-white dropdown-item bg-dark" routerLink="/home">Accueil</a>
+        <a class="text-white dropdown-item bg-dark" routerLink="/tv">Séries</a>
+        <a class="text-white dropdown-item bg-dark" routerLink="/movie">Films</a>
+        <a class="text-white dropdown-item bg-dark" *ngIf="isConnected()" routerLink="/list">Ma liste</a>
+      </div>
     </div>
-    <div class="col-1">
-      <div class="dropdown">
-        <button class="btn dropdown-toggle text-white ml-3 py-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user"></i>
-        </button>
-        <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
-          <a *ngIf="!isConnected()" class="dropdown-item bg-dark text-white" routerLink="/login">Se connecter</a>
-          <a *ngIf="!isConnected()" class="dropdown-item bg-dark text-white" routerLink="/register">S'inscrire</a>
-          <button *ngIf="isConnected()" (click)="disconnect()" class="btn dropdown-item bg-dark text-white" routerLink="/register">Se déconnecter</button>
+
+    <div class="col-sm-2 col-3">
+      <div class="row">
+        <div class="col-6 text-center">
+          <a class="text-white text-center" routerLink="/search"><i class="fas fa-search"></i></a>
+        </div>
+
+        <div class="col-6">
+          <div class="dropdown">
+            <button class="btn dropdown-toggle text-white py-0" type="button" id="dropdownMenuCompte" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user"></i>
+            </button>
+            <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuCompte">
+              <a *ngIf="!isConnected()" class="dropdown-item bg-dark text-white" routerLink="/login">Se connecter</a>
+              <a *ngIf="!isConnected()" class="dropdown-item bg-dark text-white" routerLink="/register">S'inscrire</a>
+              <p class="text-white text-center text-uppercase">{{user.username}} </p>
+              <div class="dropdown-divider"></div>
+              <button *ngIf="isConnected()" (click)="disconnect()" class="btn dropdown-item bg-dark text-white" routerLink="/register">Se déconnecter</button>
+            </div>
+          </div>
         </div>
       </div>
-      <!--<a class="text-white ml-3" routerLink="/search"><i class="fas fa-bars"></i></a>-->
     </div>
+
   </div>
 </div>
 

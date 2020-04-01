@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Users} from "./models/Users";
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  user: Users;
+
+  constructor() { }
+
   isConnected() {
-    return localStorage.getItem('user') !== null;
+    this.user = JSON.parse(localStorage.getItem('user'));
+    return this.user !== null;
   }
 
   disconnect() {
