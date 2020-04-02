@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FilmService} from '../../services/film.service';
+import {Movies} from '../../models/Movies';
+import {ListService} from '../../services/list.service';
 
 @Component({
   selector: 'app-detail',
@@ -18,6 +20,7 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private filmService: FilmService,
+    private listService: ListService,
     private route: ActivatedRoute
   ) { }
 
@@ -39,6 +42,7 @@ export class DetailComponent implements OnInit {
         this.filmService.getTvById(this.id).subscribe(response => {
           this.film = response;
         });
+        break;
     }
 
   }
@@ -48,6 +52,21 @@ export class DetailComponent implements OnInit {
   }
 
   addToList() {
+    let title;
+    const userId = JSON.parse(localStorage.getItem('user')).id;
+    switch (this.type) {
+      case 'movie':
+        title = this.film.title;
+        break;
+      case 'tv':
+        title = this.film.name;
+        break;
+    }
+    const movie = new Movies(userId, title, this.film.poster_path);
+    this.listService.addMovie(movie).subscribe(response => {
+
+    });
+
     this.list.push(this.film);
     localStorage.setItem('list', JSON.stringify(this.list));
   }

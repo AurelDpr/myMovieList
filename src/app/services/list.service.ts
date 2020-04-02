@@ -2,26 +2,27 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Users} from "../models/Users";
+import {Movies} from "../models/Movies";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/Json' })
 };
 
-const baseUrl = 'http://52.169.108.3:9090/user';
+const baseUrl = 'http://52.169.108.3:9090/user/read';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class UserService {
+export class ListService {
 
   constructor(private http: HttpClient) { }
 
-  getUserByUsernameAndPassword(user): Observable<Users> {
-    return this.http.post<Users>(baseUrl + '/login', user);
+  addMovie(movie): Observable<Movies[]> {
+    return this.http.post<Movies[]>(baseUrl + '/create', movie);
   }
 
-  addUser(user): Observable<Users[]> {
-    return this.http.post<Users[]>(baseUrl + '/create', user);
+  getMovieByUserId(userId): Observable<Movies[]> {
+    return this.http.get<Movies[]>(baseUrl + '/get?userId=' + userId);
   }
 }

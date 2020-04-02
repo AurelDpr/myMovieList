@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ListService} from '../../services/list.service';
 
 @Component({
   selector: 'app-list',
@@ -11,9 +12,15 @@ export class ListComponent implements OnInit {
   baseOriginalPosterPath = 'https://image.tmdb.org/t/p/original';
   baseLittlePosterPath = 'https://image.tmdb.org/t/p/w154';
 
-  constructor() { }
+  constructor(
+    private listService: ListService
+  ) { }
 
   ngOnInit() {
-    this.listes = JSON.parse(localStorage.getItem('list'));
+    this.listService.getMovieByUserId(JSON.parse(localStorage.getItem('user')).id).subscribe(response => {
+      this.listes = response;
+      console.log(this.listes);
+    });
+    // this.listes = JSON.parse(localStorage.getItem('list'));
   }
 }
