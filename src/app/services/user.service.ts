@@ -7,7 +7,8 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/Json' })
 };
 
-const baseUrl = 'http://52.169.108.3:8080/myMovieListSpring-0.0.1-SNAPSHOT/user';
+const baseUrl = 'https://mymovielist.northeurope.cloudapp.azure.com:8443/api/user';
+// const baseUrl = 'http://localhost:9090/user';
 
 @Injectable({
   providedIn: 'root'

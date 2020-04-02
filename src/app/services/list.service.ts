@@ -8,7 +8,8 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/Json' })
 };
 
-const baseUrl = 'http://52.169.108.3:8080/myMovieListSpring-0.0.1-SNAPSHOT/movie';
+const baseUrl = 'https://mymovielist.northeurope.cloudapp.azure.com:8443/api/movie';
+// const baseUrl = 'http://localhost:9090/movie';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,10 @@ export class ListService {
 
   addMovie(movie): Observable<Movies[]> {
     return this.http.post<Movies[]>(baseUrl + '/create', movie);
+  }
+
+  deleteMovie(movieId): Observable<Movies> {
+    return this.http.delete<Movies>(baseUrl + '/delete?movieId=' + movieId);
   }
 
   getMovieByUserId(userId): Observable<Movies[]> {

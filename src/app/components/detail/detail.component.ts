@@ -30,6 +30,11 @@ export class DetailComponent implements OnInit {
 
     if (JSON.parse(localStorage.getItem('list')) !== null) {
       this.list = JSON.parse(localStorage.getItem('list'));
+    } else {
+      this.listService.getMovieByUserId(JSON.parse(localStorage.getItem('user')).id).subscribe(response => {
+        this.list = response;
+        localStorage.setItem('list', JSON.stringify(this.list));
+      });
     }
 
     switch (this.type) {
@@ -62,22 +67,22 @@ export class DetailComponent implements OnInit {
         title = this.film.name;
         break;
     }
-    const movie = new Movies(userId, title, this.film.poster_path);
+    const movie = new Movies(userId, this.film.id, title, this.film.poster_path);
     this.listService.addMovie(movie).subscribe(response => {
-
+      this.list.push(response);
+      localStorage.setItem('list', JSON.stringify(this.list));
     });
-
-    this.list.push(this.film);
-    localStorage.setItem('list', JSON.stringify(this.list));
   }
 
   removeToList() {
-    this.list = this.list.filter( item => item.id !== this.film.id );
-    localStorage.setItem('list', JSON.stringify(this.list));
+    this.listService.deleteMovie(this.list.filter( item => item.movieId === this.film.id )[0].id).subscribe(response => {
+      this.list = this.list.filter( item => item.movieId !== this.film.id );
+      localStorage.setItem('list', JSON.stringify(this.list));
+    });
   }
 
   isInList() {
-    return this.list.filter( item => item.id === this.id ).length > 0;
+    return this.list.filter( item => item.movieId === this.id ).length > 0;
   }
 
 }
