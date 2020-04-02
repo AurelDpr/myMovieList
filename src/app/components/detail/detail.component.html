@@ -18,8 +18,8 @@
     </div>
 
     <div class="col-md-9 col-12 px-5 mx-0 text-center text-white mt-3" *ngIf="film !== undefined">
-      <h2 *ngIf="type == 'movie'"><u>{{film.title}}</u></h2>
-      <h2 *ngIf="type == 'tv'"><u>{{film.name}}</u></h2>
+      <h2 *ngIf="type == 'movie'">{{film.title}}</h2>
+      <h2 *ngIf="type == 'tv'">{{film.name}}</h2>
       <p class="mt-3">{{film.overview}}</p>
     </div>
   </div>

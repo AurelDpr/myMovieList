@@ -10,11 +10,8 @@
     <div class="col-lg-1 col-md-2 col-2 d-md-block d-none">
       <a class="text-white" routerLink="/tv">Séries</a>
     </div>
-    <div class="col-lg-1 col-md-2 col-2 d-md-block d-none">
+    <div class="col-lg-6 col-md-4 col-4 d-md-block d-none">
       <a class="text-white" routerLink="/movie">Films</a>
-    </div>
-    <div class="col-xl-5 col-lg-5 col-md-2 col-2 d-md-block d-none">
-      <a class="text-white" *ngIf="isConnected()" routerLink="/list">Ma liste</a>
     </div>
 
     <div class="dropdown col-sm-8 col-6 d-block d-md-none">
@@ -25,7 +22,6 @@
         <a class="text-white dropdown-item bg-dark" routerLink="/home">Accueil</a>
         <a class="text-white dropdown-item bg-dark" routerLink="/tv">Séries</a>
         <a class="text-white dropdown-item bg-dark" routerLink="/movie">Films</a>
-        <a class="text-white dropdown-item bg-dark" *ngIf="isConnected()" routerLink="/list">Ma liste</a>
       </div>
     </div>
 
@@ -45,6 +41,7 @@
               <a *ngIf="!isConnected()" class="dropdown-item bg-dark text-white" routerLink="/register">S'inscrire</a>
               <p *ngIf="isConnected()" class="text-white text-center text-uppercase">{{user.username}} </p>
               <div *ngIf="isConnected()" class="dropdown-divider"></div>
+              <a *ngIf="isConnected()" class="dropdown-item bg-dark text-white" routerLink="/list">Ma liste</a>
               <button *ngIf="isConnected()" (click)="disconnect()" class="btn dropdown-item bg-dark text-white" routerLink="/register">Se déconnecter</button>
             </div>
           </div>
