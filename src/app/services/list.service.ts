@@ -8,7 +8,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/Json' })
 };
 
-const baseUrl = 'http://52.169.108.3:9090/movie';
+const baseUrl = 'http://52.169.108.3:8080/myMovieListSpring-0.0.1-SNAPSHOT/movie';
 
 @Injectable({
   providedIn: 'root'
