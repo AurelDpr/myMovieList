@@ -8,7 +8,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/Json' })
 };
 
-const baseUrl = 'http://52.169.108.3:9090/user/read';
+const baseUrl = 'http://52.169.108.3:9090/movie';
 
 @Injectable({
   providedIn: 'root'
