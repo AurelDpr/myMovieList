@@ -30,7 +30,7 @@ export class DetailComponent implements OnInit {
 
     if (JSON.parse(localStorage.getItem('list')) !== null) {
       this.list = JSON.parse(localStorage.getItem('list'));
-    } else {
+    } else if (JSON.parse(localStorage.getItem('user')) !== null) {
       this.listService.getMovieByUserId(JSON.parse(localStorage.getItem('user')).id).subscribe(response => {
         this.list = response;
         localStorage.setItem('list', JSON.stringify(this.list));
