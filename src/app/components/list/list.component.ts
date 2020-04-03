@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ListService} from '../../services/list.service';
+import {Router} from "@angular/router";
+import {Movies} from "../../models/Movies";
 
 @Component({
   selector: 'app-list',
@@ -13,7 +15,8 @@ export class ListComponent implements OnInit {
   baseLittlePosterPath = 'https://image.tmdb.org/t/p/w154';
 
   constructor(
-    private listService: ListService
+    private listService: ListService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -22,5 +25,9 @@ export class ListComponent implements OnInit {
       console.log(this.listes);
     });
     // this.listes = JSON.parse(localStorage.getItem('list'));
+  }
+
+  openDetail(film: Movies) {
+    this.router.navigate(['/detail/' + film.type + '/' + film.movieId]);
   }
 }

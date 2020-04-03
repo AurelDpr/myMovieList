@@ -67,7 +67,7 @@ export class DetailComponent implements OnInit {
         title = this.film.name;
         break;
     }
-    const movie = new Movies(userId, this.film.id, title, this.film.poster_path);
+    const movie = new Movies(userId, this.film.id, title, this.type, this.film.poster_path);
     this.listService.addMovie(movie).subscribe(response => {
       this.list.push(response);
       localStorage.setItem('list', JSON.stringify(this.list));
